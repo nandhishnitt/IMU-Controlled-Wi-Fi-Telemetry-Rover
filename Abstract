@@ -1,0 +1,9 @@
+ABSTRACT
+
+This project details the build of a wireless bot controlled entirely by tilting a smartphone. 
+
+Instead of using a standard joystick, the system gets pitch and roll data from the phone's built-in gyroscope.
+The main controller is an ESP32, which acts as a local web server and communicates with the phone over Wi-Fi using standard HTTP requests. 
+The ESP32 translates the tilt angles into PWM signals to drive two BO motors via an L298N motor driver using differential steering.
+A major focus of the software was handling real-world hardware limits—specifically, writing JavaScript filters to ignore hand tremors, clamping the math to prevent integer overflow, and coding a "kickstart" voltage jump to break the static friction of the plastic gearboxes. 
+Network traffic was also hard-capped at 4Hz to prevent the ESP32 from crashing, resulting in a smooth, proportional driving experience.
